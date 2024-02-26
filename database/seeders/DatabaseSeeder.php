@@ -17,12 +17,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        for ($i = 0; $i < 5; $i++) {
+            Profile::factory([
+                'user_id' => User::factory()
+                    ->hasAttached(Group::factory()
+                        ->create())->create()
+            ])->create();
+        }
 
-        Profile::factory([
-            'user_id'=>User::factory()
-                ->hasAttached(Group::factory()
-                    ->create())->create()
-        ])->create();
         Category::factory(4)->create();
         Product::factory(20)->create();
 
