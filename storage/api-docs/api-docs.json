@@ -396,7 +396,206 @@
                 ],
                 "responses": {
                     "404": {
-                        "description": "Cant find product"
+                        "description": "Cant find category"
+                    },
+                    "204": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/v1/profiles": {
+            "get": {
+                "tags": [
+                    "Profiles"
+                ],
+                "summary": "Get all profiles",
+                "description": "Returns a list of all profiles",
+                "operationId": "f301792bb5be5f7d940e04c16c077ab3",
+                "responses": {
+                    "200": {
+                        "description": "profiles"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Profiles"
+                ],
+                "summary": "update a new Profile",
+                "description": "update a new Profile",
+                "operationId": "b73c716914e1a95ecce0b285ba0db056",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "bio": {
+                                        "type": "strig",
+                                        "example": "DASDSADSAdsa"
+                                    },
+                                    "address": {
+                                        "type": "string",
+                                        "example": "232"
+                                    },
+                                    "user_id": {
+                                        "type": "integer",
+                                        "format": "int64",
+                                        "example": "1"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "422": {
+                        "description": "Unprocessible entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "message": "Error",
+                                            "errors": {
+                                                "FIELD": "error1"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Profiles"
+                ],
+                "summary": "Create a new Profile",
+                "description": "Creates a new Profile",
+                "operationId": "7cad69783ae4b4ad2f55eb818a6cae62",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "bio": {
+                                        "type": "strig",
+                                        "example": "DASDSADSAdsa"
+                                    },
+                                    "address": {
+                                        "type": "string",
+                                        "example": "232"
+                                    },
+                                    "user_id": {
+                                        "type": "integer",
+                                        "format": "int64",
+                                        "example": "1"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "422": {
+                        "description": "Unprocessible entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "message": "Error",
+                                            "errors": {
+                                                "FIELD": "error1"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/profiles/{id}": {
+            "get": {
+                "tags": [
+                    "Profiles"
+                ],
+                "summary": "Show Profile",
+                "operationId": "20447087ddac26a57fc7607cacb253ae",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Cant find Profile",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "message": "Error",
+                                            "errors": {
+                                                "FIELD": "error1"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Profiles"
+                ],
+                "summary": "Delete Profile",
+                "operationId": "d0163ff84a4c436f69c12e4ce3b889ff",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "404": {
+                        "description": "Cant find category"
                     },
                     "204": {
                         "description": "OK"

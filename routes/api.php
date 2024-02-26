@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('v1')->group(function (){
     Route::apiResource('categories',\App\Http\Controllers\Api\V1\CategoriesController::class);
     Route::apiResource('products',\App\Http\Controllers\Api\V1\ProductController::class);
+    Route::apiResource('profiles',\App\Http\Controllers\Api\V1\ProfileController::class);
 });
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
