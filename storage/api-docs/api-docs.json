@@ -122,8 +122,7 @@
                 "tags": [
                     "Categories"
                 ],
-                "summary": "Get all categories",
-                "description": "Returns a list of all categories",
+                "summary": "show category",
                 "operationId": "4c01ed4981cb997db8feb391ba67fab8",
                 "parameters": [
                     {
@@ -140,7 +139,7 @@
                     "200": {
                         "description": "OK"
                     },
-                    "422": {
+                    "404": {
                         "description": "Can find category",
                         "content": {
                             "application/json": {
@@ -184,6 +183,223 @@
                     },
                     "404": {
                         "description": "Cant find category"
+                    }
+                }
+            }
+        },
+        "/api/v1/products": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Get all products ",
+                "description": "Returns a list of all products",
+                "operationId": "1ce27f90dd8c39cea9520bf45d58c7c2",
+                "responses": {
+                    "200": {
+                        "description": "products"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "update a new product",
+                "description": "update a new product",
+                "operationId": "034ed94e7801c29c890cfd52f268fe3c",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Home"
+                                    },
+                                    "body": {
+                                        "type": "strig",
+                                        "example": "DASDSADSAdsa"
+                                    },
+                                    "price": {
+                                        "type": "integer",
+                                        "example": "232"
+                                    },
+                                    "user_id": {
+                                        "type": "integer",
+                                        "format": "int64",
+                                        "example": "1"
+                                    },
+                                    "category_id": {
+                                        "type": "integer",
+                                        "format": "int64",
+                                        "example": "3"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "422": {
+                        "description": "Unprocessible entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "message": "Error",
+                                            "errors": {
+                                                "FIELD": "error1"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Create a new product",
+                "description": "Creates a new product",
+                "operationId": "acaa0d3fdc74fd4b534e70fc016cf7f1",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Home"
+                                    },
+                                    "body": {
+                                        "type": "strig",
+                                        "example": "DASDSADSAdsa"
+                                    },
+                                    "price": {
+                                        "type": "integer",
+                                        "example": "232"
+                                    },
+                                    "user_id": {
+                                        "type": "integer",
+                                        "format": "int64",
+                                        "example": "1"
+                                    },
+                                    "category_id": {
+                                        "type": "integer",
+                                        "format": "int64",
+                                        "example": "3"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "422": {
+                        "description": "Unprocessible entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "message": "Error",
+                                            "errors": {
+                                                "FIELD": "error1"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/products/{id}": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Show product",
+                "operationId": "249e765b6489191fb8167474db8867f7",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Cant find product",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "An result object.",
+                                        "value": {
+                                            "message": "Error",
+                                            "errors": {
+                                                "FIELD": "error1"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Delete product",
+                "operationId": "cc01048629edd9759ba1d7ffc989f667",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "404": {
+                        "description": "Cant find product"
+                    },
+                    "204": {
+                        "description": "OK"
                     }
                 }
             }

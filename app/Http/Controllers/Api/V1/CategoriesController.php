@@ -67,8 +67,7 @@ class CategoriesController extends ApiV1Controller
      * @OA\Get(
      *     path="/api/v1/categories/{id}",
      *     tags={"Categories"},
-     *     summary="Get all categories",
-     *     description="Returns a list of all categories",
+     *     summary="show category",
      *     @OA\Parameter(
      *          in="path",
      *         name="id",
@@ -80,7 +79,7 @@ class CategoriesController extends ApiV1Controller
      *     ),
      *     @OA\Response(response="200", description="Category find",description="OK"),
      *      @OA\Response(
-     *           response=422,
+     *           response=404,
      *           description="Can find category",
      *           @OA\JsonContent(
      *               @OA\Examples(example="result", value={"message": "Error", "errors": {"FIELD": "error1"}}, summary="An result object.")
@@ -160,9 +159,15 @@ class CategoriesController extends ApiV1Controller
      */
     public function destroy(string $id)
     {
-        $category = Category::findOrFail($id);
-        $category->delete();
-        return response()->json('', 204);
+        $category = Category::find($id);
+        if ($category) {
+            $category->delete();
+            return response()->json('', 204);
+        }
+        return response()->json([
+            'data' => null,
+            'message' => 'not found'
+        ]);
     }
 }
 
